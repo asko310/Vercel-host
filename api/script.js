@@ -7,7 +7,7 @@ document.getElementById('productForm').addEventListener('submit', async (event) 
     const price = document.getElementById('price').value;
     const image_url = document.getElementById('image_url').value;
     
-    const response = await fetch('https://your-vercel-app.vercel.app/products', {
+    const response = await fetch('https://vercel-host-3si3soj6d-asko310s-projects.vercel.app/products', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
