@@ -1,0 +1,12 @@
+{
+    "name": "vercel-host",
+    "version": "1.0.0",
+    "main": "api/index.js",
+    "scripts": {
+      "start": "node api/index.js"
+    },
+    "dependencies": {
+      "express": "^4.17.1",
+      "@supabase/supabase-js": "^1.21.0"
+    }
+  }
