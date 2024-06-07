@@ -56,5 +56,5 @@ app.delete('/products/:id', async (req, res) => {
     }
     res.status(200).json(data);
 });
-
+app.use('/admin', express.static('admin'));
 module.exports = app;
