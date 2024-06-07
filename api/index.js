@@ -30,14 +30,12 @@ app.get('/products/:id', async (req, res) => {
 });
 
 app.post('/products', async (req, res) => {
-    const { name, description, price } = req.body;
-    const { data, error } = await supabase.from('products').insert([{ name, description, price }]);
+    const { data, error } = await supabase.from('products').insert([{ ...req.body }]);
     if (error) {
         return res.status(500).json({ error: error.message });
     }
     res.status(201).json(data);
 });
-
 app.put('/products/:id', async (req, res) => {
     const { id } = req.params;
     const { name, description, price } = req.body;
