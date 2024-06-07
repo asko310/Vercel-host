@@ -12,5 +12,6 @@ formEl.addEventListener('submit', event =>{
         },
         body: JSON.stringify(data)
     }).then(res => res.json())
-    .then(data => console.log);
+    .then(data => console.log)
+    .catch(error => console.log(error));
 });
