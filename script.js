@@ -1,25 +1,16 @@
-document.getElementById('productForm').addEventListener('submit', async (event) => {
+const formEl = document.querySelector('.form');
+formEl.addEventListener('submit', event =>{
     event.preventDefault();
-    
-    const category = document.getElementById('category').value;
-    const name = document.getElementById('name').value;
-    const description = document.getElementById('description').value;
-    const price = document.getElementById('price').value;
-    const image_url = document.getElementById('image_url').value;
-    
-    const response = await fetch('https://your-vercel-app.vercel.app/products', {
+    const formData = new FormData(formEl);
+    const data = Object.fromEntries(formData);
+    console.log(data);
+    fetch('https://vercel-host-ten.vercel.app/products', {
         method: 'POST',
+        mode: 'cors',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ category, name, description, price, image_url })
-    });
-    
-    if (response.ok) {
-        alert('Produs adăugat cu succes!');
-        document.getElementById('productForm').reset();
-    } else {
-        const errorData = await response.json();
-        alert('Eroare la adăugarea produsului: ' + errorData.error);
-    }
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+    .then(data => console.log);
 });

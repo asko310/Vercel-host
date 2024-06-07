@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');////
 const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
@@ -8,7 +9,11 @@ app.use(express.json());
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
-
+const corsOptions = {
+    origin: '*', // Adjust this to your frontend URL if necessary
+    methods: 'GET,POST,PUT,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type,Authorization'
+  };
 app.get('/products', async (req, res) => {
     const { data, error } = await supabase.from('products').select('*');
     if (error) {
