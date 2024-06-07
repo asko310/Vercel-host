@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors');  // Import CORS
 const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
 
+app.use(cors());  // CORS 
 app.use(express.json());
 
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -55,4 +57,3 @@ app.delete('/products/:id', async (req, res) => {
 });
 
 module.exports = app;
-
