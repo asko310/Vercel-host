@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');  // Import CORS
+const dotenv = require('dotenv');
 const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
@@ -7,8 +8,8 @@ const app = express();
 app.use(cors());  // CORS 
 app.use(express.json());
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
+const supabaseUrl = 'https://kkszwlbzpsolxwfborid.supabase.co/';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtrc3p3bGJ6cHNvbHh3ZmJvcmlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc2MTg0NzgsImV4cCI6MjAzMzE5NDQ3OH0.AKto-QsvQ5Wa8keOb_HMUtLoJKpAcFOmJy97B3_uFoo';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 app.get('/products', async (req, res) => {
